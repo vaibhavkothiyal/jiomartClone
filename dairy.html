@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,400;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* navbar style  --------------start------------- */
+        #navbar {
+            display: grid;
+            grid-template-columns: 5% 10% 60% 12% 8%;
+            grid-gap: 1%;
+            align-items: center;
+            text-align: center;
+            background-color: #008ecc;
+            color: white;
+            padding: 13px;
+        }
+
+        #navbar>div:nth-child(2)>div:nth-child(1) {
+            font-size: 30px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 1000;
+        }
+
+        #navbar>div:nth-child(2)>div:nth-child(2) {
+            text-align: right;
+            font-size: 10px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #navbar .navinnerdiv>div {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        #navbar .navinnerdiv>div:last-child {
+            margin-top: 4px;
+        }
+
+        #navbar .navText {
+            font-size: 13px;
+            font-weight: 600;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+
+        #navbar input {
+            width: 90%;
+            height: 38px;
+            border-radius: 5px;
+            border: none;
+            padding-left: 10px;
+        }
+        #navbar .menu{
+            font-size: 35px;
+        }
+
+
+        /* SubNav Catagories style  --------------start------------- */
+
+        #catagNavbar .navli {
+            padding: 6px;
+            margin: 5px 24px;
+        }
+        #catagNavbar li{
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
+            color: black;
+            cursor: pointer;
+            background-color: #f3f3f3;
+        }
+        #catagNavbar{
+            background-color: #f3f3f3;
+        }
+        #catagNavbar div{
+            margin-top: 8px;
+        }
+        #catagNavbar div li:hover {
+            background-color: white;
+            cursor: pointer;
+            color: #007bff;
+            letter-spacing: normal;
+        }
+       #catagNavbar .location{
+            /* width: 22px; */
+            margin: 7px 0px 0px 30px;
+            /* position: absolute; */
+            /* left: 35px; */
+            color: rgb(83, 83, 83);
+        }
+        #productSlide{
+            width: 100%;
+            height: 300px;
+        }
+        .divpro{
+            width: 100%;
+            height: 100%;
+        }
+        .imgpro{
+            width: 100%;
+            height: 100%;
+        } 
+
+        #ExploreBestsellers{  
+          margin: 5% 5% 10% 5%; 
+            height: 600px;
+            display: grid;
+            grid-template-columns: 20% 20% 20% 20%;
+            grid-gap: 5%;
+            justify-content: center;
+        }
+        .div1{
+            border: 1px solid lightgrey ;
+            width: 90%;
+            height: 250px;
+            margin: auto;
+            background-color: rgb(214,211,204);
+            text-align: center;
+        } 
+        .div1 > p{
+            margin: 15px;
+        }
+        .div1:hover{
+            box-shadow: 10px 5px 5px gray;
+        }
+        .div_img{
+            width: 100%; 
+            height: 50%;  
+            text-align: center;
+        }
+        .img1 {
+            width: 90%;
+            height: 90%;
+            margin: auto;
+        }
+        .img1:hover{
+            width: 100%;
+            height: 100%;
+        }
+        .div_text{
+            width: 100%;
+            height: 35%;
+            text-align: left;
+        }
+        .div_text > p {
+            margin: 10px;
+        }
+        .btn1{
+            background-color:  rgb(0,142,204);
+            width: 80%;
+            height: 100%;
+            cursor: pointer;
+           
+        }
+        #highlow {
+             text-align: center;
+        }
+        #highlow > button {
+            margin: 10px;
+            width: 15%;
+            height: 100%;
+            margin-bottom: 0;
+            background-color: rgb(0,142,204);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<!-- ---------------------"BODY" starts here----------------------- -->
+<body id="htmlBody">
+    <div id="navbar">
+        <div>
+            <span class="material-icons menu">menu</span>
+        </div>
+        <div onclick="refresh()" style="cursor: pointer;">
+            <div>JioMart</div>
+            <div>BETA</div>
+        </div>
+        <div><input type="text" placeholder="Search essential, groceries, and more..."></div>
+        <div style="cursor: pointer;" class="signIn navinnerdiv">
+            <span class="material-icons">perm_identity</span>
+            <div onclick="goTOsignIn()" class="navText">Sign In / Sign Up</div>
+        </div>
+        <div style="cursor: pointer;" class="cart navinnerdiv">
+            <span class="material-icons">shopping_cart</span>
+            <div onclick="goTocart()" class="navText">Cart</div>
+        </div>
+    </div>
+    <div id="catagNavbar"></div>  
+    <div id="productSlide"></div>  
+    <div id="kidsWear"> 
+        <h1>ALL PRODUCTS</h1>
+        <div id = "highlow">
+        <button onclick="sortLH()">Low to High</button>
+        <button onclick="sortHL()">High to Low</button>
+        </div> 
+        <div id="ExploreBestsellers"></div>
+    </div>
+
+</body>
+
+</html>
+
+<!-- ---------------------script starts here----------------------- -->
+
+
+<script>
+
+    // ---------------------"Navbar JS" starts here----------------------- 
+
+    function goTOsignIn() {
+        window.location.href = "signin.html";
+    }
+    function goTocart() {
+        window.location.href = "cart.html";
+    }
+    function refresh(){
+        window.location.href="home.html";
+    }
+
+
+
+    // ---------------------"Navbar Catagory JS" starts here----------------------- 
+    function navCatagry() {
+        let navCatagryContainer = document.getElementById("catagNavbar");
+        navCatagryContainer.style.textAlign = "center";
+        // navCatagryContainer.style.backgroundColor = "#f3f3f3"
+        let navUl = document.createElement("ul");
+        navUl.style.display = "grid";
+        navUl.style.gridTemplateColumns=" 2% 11% 15% 13% 8% 8% 8% 8% 8% 18%";
+        navUl.style.listStyle = "none";
+        navUl.style.textAlign = "center";
+        let navicon1=document.createElement("li");
+        navicon1.innerHTML='<span class="material-icons location"> place </span>';
+
+
+        let navli1 = document.createElement("li");
+        navli1.innerText ="Deliver To";
+        let chkdisplay=0;
+        navli1.onclick = function () {
+            console.log("hee");
+            navli1Hover();
+            function navli1Hover() {
+                console.log("hi1", li1div);
+                li1div.style.display = "block";
+                li1div.style.position = "absolute";
+                chkdisplay=1;
+            }
+        }
+        let body=document.getElementById("htmlBody");
+        body.onclick=function(){
+            hikeDeliveryDiv();
+            function hikeDeliveryDiv(){
+                if(chkdisplay==1){
+                    li1div.style.display = "none";
+                    console.log("welcome");
+                }
+            }
+        }
+        navli1.className = "navli";
+        let li1div = document.createElement("div");
+        li1div.style.display = "none";
+
+        let li1div_ul = document.createElement("ul");
+        li1div_ul.style.listStyle = "none";
+        li1div_ul.style.width = "100px";
+        li1div_ul.style.textAlign = "left";
+        li1div_ul.style.paddingLeft = "10px";
+        let li1div_ul_li1 = document.createElement("li");
+        li1div_ul_li1.innerText = "here";
+        let li1div_ul_li2 = document.createElement("li");
+        li1div_ul_li2.innerText = "here";
+        let li1div_ul_li3 = document.createElement("li");
+        li1div_ul_li3.innerText = "here";
+        li1div_ul.append(li1div_ul_li1, li1div_ul_li2, li1div_ul_li3);
+        li1div.append(li1div_ul);
+        navli1.append(li1div);
+
+
+
+        let navli2 = document.createElement("li");
+        navli2.innerText = "Fruits & vegetable";
+        navli2.onmouseover = function () {
+            console.log("hee")
+            navli2Hover();
+            function navli2Hover() {
+                console.log("hi1", li2div);
+                li2div.style.display = "block";
+                li2div.style.position = "absolute";
+                // li2div.style.backgroundColor = "#f3f3f3";
+            }
+        }
+        navli2.onmouseleave = function () {
+            console.log("hee")
+            navli2Hover();
+            function navli2Hover() {
+                console.log("hi1", li2div);
+                li2div.style.display = "none";
+            }
+        }
+        navli2.className = "navli";
+        let li2div = document.createElement("div");
+        li2div.style.display = "none";
+        let li2div_ul = document.createElement("ul");
+        li2div_ul.style.listStyle = "none";
+        li2div_ul.style.width = "220px";
+        li2div_ul.style.textAlign = "left";
+        let li2div_ul_li1 = document.createElement("li");
+        li2div_ul_li1.style.padding = "10px";
+        li2div_ul_li1.innerText = "Fresh Fruits";
+        let li2div_ul_li2 = document.createElement("li");
+        li2div_ul_li2.style.padding = "10px";
+        li2div_ul_li2.innerText = "Fresh Vegetables";
+        let li2div_ul_li3 = document.createElement("li");
+        li2div_ul_li3.style.padding = "10px";
+        li2div_ul_li3.innerText = "Herbs & Seasonings";
+        let li2div_ul_li4 = document.createElement("li");
+        li2div_ul_li4.style.padding = "10px";
+        li2div_ul_li4.innerText = "Exotic Fruits & vegetables";
+        li2div_ul.append(li2div_ul_li1, li2div_ul_li2, li2div_ul_li3, li2div_ul_li4);
+        li2div.append(li2div_ul);
+        navli2.append(li2div);
+
+
+
+        let navli3 = document.createElement("li");
+        navli3.innerText = "Dairy & Bakery";
+        navli3.onmouseover = function () {
+            console.log("hee")
+            navli3Hover();
+            function navli3Hover() {
+                console.log("hi1", li3div);
+                li3div.style.display = "block";
+                li3div.style.position = "absolute";
+                // li3div.style.backgroundColor = "#f3f3f3";
+            }
+        }
+        navli3.onmouseleave = function () {
+            console.log("hee")
+            navli3Hover();
+            function navli3Hover() {
+                console.log("hi1", li3div);
+                li3div.style.display = "none";
+            }
+        }
+        navli3.className = "navli";
+        let li3div = document.createElement("div");
+        li3div.style.display = "none";
+        let li3div_ul = document.createElement("ul");
+        li3div_ul.style.listStyle = "none";
+        li3div_ul.style.width = "220px";
+        li3div_ul.style.textAlign = "left";
+        let li3div_ul_li1 = document.createElement("li");
+        li3div_ul_li1.style.padding = "10px";
+        li3div_ul_li1.innerText = "Dairy";
+        let li3div_ul_li2 = document.createElement("li");
+        li3div_ul_li2.style.padding = "10px";
+        li3div_ul_li2.innerText = "Toast & Khari";
+        let li3div_ul_li3 = document.createElement("li");
+        li3div_ul_li3.style.padding = "10px";
+        li3div_ul_li3.innerText = "Cakes & Muffins";
+        let li3div_ul_li4 = document.createElement("li");
+        li3div_ul_li4.style.padding = "10px";
+        li3div_ul_li4.innerText = "Breads & Buns";
+        let li3div_ul_li5 = document.createElement("li");
+        li3div_ul_li5.style.padding = "10px";
+        li3div_ul_li5.innerText = "Baked Cookies";
+        li3div_ul.append(li3div_ul_li1, li3div_ul_li2, li3div_ul_li3, li3div_ul_li4, li3div_ul_li5);
+        li3div.append(li3div_ul);
+        navli3.append(li3div);
+
+
+
+        let navli4 = document.createElement("li");
+        navli4.innerText = "Staples";
+        navli4.onmouseover = function () {
+            console.log("hee")
+            navli4Hover();
+            function navli4Hover() {
+                console.log("hi1", li4div);
+                li4div.style.display = "block";
+                li4div.style.position = "absolute";
+                // li4div.style.backgroundColor = "#f3f3f3";
+            }
+        }
+        navli4.onmouseleave = function () {
+            console.log("hee")
+            navli4Hover();
+            function navli4Hover() {
+                console.log("hi1", li4div);
+                li4div.style.display = "none";
+            }
+        }
+        navli4.className = "navli";
+        let li4div = document.createElement("div");
+        li4div.style.display = "none";
+        let li4div_ul = document.createElement("ul");
+        li4div_ul.style.listStyle = "none";
+        li4div_ul.style.width = "220px";
+        li4div_ul.style.textAlign = "left";
+        let li4div_ul_li1 = document.createElement("li");
+        li4div_ul_li1.style.padding = "10px";
+        li4div_ul_li1.innerText = "Atta, Flours & Sooji";
+        let li4div_ul_li2 = document.createElement("li");
+        li4div_ul_li2.style.padding = "10px";
+        li4div_ul_li2.innerText = "Dals & Pulses";
+        let li4div_ul_li3 = document.createElement("li");
+        li4div_ul_li3.style.padding = "10px";
+        li4div_ul_li3.innerText = "Rice & Rice Products";
+        let li4div_ul_li4 = document.createElement("li");
+        li4div_ul_li4.style.padding = "10px";
+        li4div_ul_li4.innerText = "Edible oils";
+        let li4div_ul_li5 = document.createElement("li");
+        li4div_ul_li5.style.padding = "10px";
+        li4div_ul_li5.innerText = "Masalas & Spices";
+        li4div_ul.append(li4div_ul_li1, li4div_ul_li2, li4div_ul_li3, li4div_ul_li4, li4div_ul_li5);
+        li4div.append(li4div_ul);
+        navli4.append(li4div);
+
+
+
+        let navli5 = document.createElement("li");
+        navli5.innerText = "Men";
+        navli5.onmouseover = function () {
+            console.log("hee")
+            navli5Hover();
+            function navli5Hover() {
+                console.log("hi1", li5div);
+                li5div.style.display = "block";
+                li5div.style.position = "absolute";
+                // li5div.style.backgroundColor = "#f3f3f3";
+            }
+        }
+        navli5.onmouseleave = function () {
+            console.log("hee")
+            navli5Hover();
+            function navli5Hover() {
+                console.log("hi1", li5div);
+                li5div.style.display = "none";
+            }
+        }
+        navli5.className = "navli";
+        let li5div = document.createElement("div");
+        li5div.style.display = "none";
+        let li5div_ul = document.createElement("ul");
+        li5div_ul.style.listStyle = "none";
+        li5div_ul.style.width = "220px";
+        li5div_ul.style.textAlign = "left";
+        let li5div_ul_li1 = document.createElement("li");
+        li5div_ul_li1.style.padding = "10px";
+        li5div_ul_li1.innerText = "Clothing Accessories";
+        let li5div_ul_li2 = document.createElement("li");
+        li5div_ul_li2.style.padding = "10px";
+        li5div_ul_li2.innerText = "Western Wear";
+        let li5div_ul_li3 = document.createElement("li");
+        li5div_ul_li3.style.padding = "10px";
+        li5div_ul_li3.innerText = "Inner Wear";
+        let li5div_ul_li4 = document.createElement("li");
+        li5div_ul_li4.style.padding = "10px";
+        li5div_ul_li4.innerText = "Bags, Belts & Wallets";
+        let li5div_ul_li5 = document.createElement("li");
+        li5div_ul_li5.style.padding = "10px";
+        li5div_ul_li5.innerText = "Ethnic Wear";
+        li5div_ul.append(li5div_ul_li1, li5div_ul_li2, li5div_ul_li3, li5div_ul_li4, li5div_ul_li5);
+        li5div.append(li5div_ul);
+        navli5.append(li5div);
+
+
+        let navli6 = document.createElement("li");
+        navli6.innerText = "Woman";
+        navli6.onmouseover = function () {
+            console.log("hee")
+            navli6Hover();
+            function navli6Hover() {
+                console.log("hi1", li6div);
+                li6div.style.display = "block";
+                li6div.style.position = "absolute";
+                // li6div.style.backgroundColor = "#f3f3f3";
+            }
+        }
+        navli6.onmouseleave = function () {
+            console.log("hee")
+            navli6Hover();
+            function navli6Hover() {
+                console.log("hi1", li6div);
+                li6div.style.display = "none";
+            }
+        }
+        navli6.className = "navli";
+        let li6div = document.createElement("div");
+        li6div.style.display = "none";
+        let li6div_ul = document.createElement("ul");
+        li6div_ul.style.listStyle = "none";
+        li6div_ul.style.width = "220px";
+        li6div_ul.style.textAlign = "left";
+        let li6div_ul_li1 = document.createElement("li");
+        li6div_ul_li1.style.padding = "10px";
+        li6div_ul_li1.innerText = "Ethnic Wear";
+        let li6div_ul_li2 = document.createElement("li");
+        li6div_ul_li2.style.padding = "10px";
+        li6div_ul_li2.innerText = "Western Wear";
+        let li6div_ul_li3 = document.createElement("li");
+        li6div_ul_li3.style.padding = "10px";
+        li6div_ul_li3.innerText = "Clothing Accessories";
+        let li6div_ul_li4 = document.createElement("li");
+        li6div_ul_li4.style.padding = "10px";
+        li6div_ul_li4.innerText = "Lingerie & Innerwear";
+        let li6div_ul_li5 = document.createElement("li");
+        li6div_ul_li5.style.padding = "10px";
+        li6div_ul_li5.innerText = "Bags, Belts & Wallets";
+        li6div_ul.append(li6div_ul_li1, li6div_ul_li2, li6div_ul_li3, li6div_ul_li4, li6div_ul_li5);
+        li6div.append(li6div_ul);
+        navli6.append(li6div);
+
+
+        let navli7 = document.createElement("li");
+        navli7.innerText = "Boys";
+        navli7.onmouseover = function () {
+            console.log("hee")
+            navli7Hover();
+            function navli7Hover() {
+                console.log("hi1", li7div);
+                li7div.style.display = "block";
+                li7div.style.position = "absolute";
+                // li7div.style.backgroundColor = "#f3f3f3";
+            }
+        }
+        navli7.onmouseleave = function () {
+            console.log("hee")
+            navli7Hover();
+            function navli7Hover() {
+                console.log("hi1", li7div);
+                li7div.style.display = "none";
+            }
+        }
+        navli7.className = "navli";
+        let li7div = document.createElement("div");
+        li7div.style.display = "none";
+        let li7div_ul = document.createElement("ul");
+        li7div_ul.style.listStyle = "none";
+        li7div_ul.style.width = "220px";
+        li7div_ul.style.textAlign = "left";
+        let li7div_ul_li1 = document.createElement("li");
+        li7div_ul_li1.style.padding = "10px";
+        li7div_ul_li1.innerText = "Western Wear";
+        let li7div_ul_li2 = document.createElement("li");
+        li7div_ul_li2.style.padding = "10px";
+        li7div_ul_li2.innerText = "Ethnic Wear";
+        let li7div_ul_li3 = document.createElement("li");
+        li7div_ul_li3.style.padding = "10px";
+        li7div_ul_li3.innerText = "Clothing Accessories";
+        let li7div_ul_li4 = document.createElement("li");
+        li7div_ul_li4.style.padding = "10px";
+        li7div_ul_li4.innerText = "Footwear";
+        let li7div_ul_li5 = document.createElement("li");
+        li7div_ul_li5.style.padding = "10px";
+        li7div_ul_li5.innerText = "Inner & Nightwear";
+        li7div_ul.append(li7div_ul_li1, li7div_ul_li2, li7div_ul_li3, li7div_ul_li4, li7div_ul_li5);
+        li7div.append(li7div_ul);
+        navli7.append(li7div);
+
+
+        let navli8 = document.createElement("li");
+        navli8.innerText = "Girls";
+        navli8.onmouseover = function () {
+            console.log("hee")
+            navli8Hover();
+            function navli8Hover() {
+                console.log("hi1", li8div);
+                li8div.style.display = "block";
+                li8div.style.position = "absolute";
+                // li8div.style.backgroundColor = "#f3f3f3";
+            }
+        }
+        navli8.onmouseleave = function () {
+            console.log("hee")
+            navli8Hover();
+            function navli8Hover() {
+                console.log("hi1", li8div);
+                li8div.style.display = "none";
+            }
+        }
+        navli8.className = "navli";
+        let li8div = document.createElement("div");
+        li8div.style.display = "none";
+        let li8div_ul = document.createElement("ul");
+        li8div_ul.style.listStyle = "none";
+        li8div_ul.style.width = "220px";
+        li8div_ul.style.textAlign = "left";
+        let li8div_ul_li1 = document.createElement("li");
+        li8div_ul_li1.style.padding = "10px";
+        li8div_ul_li1.innerText = "Western Wear";
+        let li8div_ul_li2 = document.createElement("li");
+        li8div_ul_li2.style.padding = "10px";
+        li8div_ul_li2.innerText = "Clothing Accessories";
+        let li8div_ul_li3 = document.createElement("li");
+        li8div_ul_li3.style.padding = "10px";
+        li8div_ul_li3.innerText = "Ethnic Wear";
+        let li8div_ul_li4 = document.createElement("li");
+        li8div_ul_li4.style.padding = "10px";
+        li8div_ul_li4.innerText = "Bags Belts & Wallets";
+        li8div_ul.append(li8div_ul_li1, li8div_ul_li2, li8div_ul_li3, li8div_ul_li4);
+        li8div.append(li8div_ul);
+        navli8.append(li8div);
+
+
+
+        let navli9 = document.createElement("li");
+        navli9.innerText = "Snacks & Branded Food";
+        navli9.onmouseover = function () {
+            console.log("hee")
+            navli9Hover();
+            function navli9Hover() {
+                console.log("hi1", li9div);
+                li9div.style.display = "block";
+                li9div.style.position = "absolute";
+                // li9div.style.backgroundColor = "#f3f3f3";
+            }
+        }
+        navli9.onmouseleave = function () {
+            console.log("hee")
+            navli9Hover();
+            function navli9Hover() {
+                console.log("hi1", li9div);
+                li9div.style.display = "none";
+            }
+        }
+        navli9.className = "navli";
+        let li9div = document.createElement("div");
+        li9div.style.display = "none";
+        let li9div_ul = document.createElement("ul");
+        li9div_ul.style.listStyle = "none";
+        li9div_ul.style.width = "220px";
+        li9div_ul.style.textAlign = "left";
+        let li9div_ul_li1 = document.createElement("li");
+        li9div_ul_li1.style.padding = "10px";
+        li9div_ul_li1.innerText = "Biscuits & Cookies";
+        let li9div_ul_li2 = document.createElement("li");
+        li9div_ul_li2.style.padding = "10px";
+        li9div_ul_li2.innerText = "Noodle, Pasta, Vermicelli";
+        let li9div_ul_li3 = document.createElement("li");
+        li9div_ul_li3.style.padding = "10px";
+        li9div_ul_li3.innerText = "BreakFast Cereals";
+        let li9div_ul_li4 = document.createElement("li");
+        li9div_ul_li4.style.padding = "10px";
+        li9div_ul_li4.innerText = "Snacks & Namkeen";
+        let li9div_ul_li5 = document.createElement("li");
+        li9div_ul_li5.style.padding = "10px";
+        li9div_ul_li5.innerText = "Chocolates & Candies";
+        li9div_ul.append(li9div_ul_li1, li9div_ul_li2, li9div_ul_li3, li9div_ul_li4, li9div_ul_li5);
+        li9div.append(li9div_ul);
+        navli9.append(li9div);
+
+
+        navUl.append(navicon1,navli1, navli2, navli3, navli4, navli5, navli6, navli7, navli8, navli9);
+        navCatagryContainer.append(navUl);
+    }
+    navCatagry();
+  
+    
+    let images = [
+    "https://www.jiomart.com/images/category/62/dairy-20200704.jpg",
+    "https://tse1.mm.bing.net/th?id=OIP.lDk3CzgXrggOOnsazs0Y3gHaFQ&pid=Api",
+    "https://tse3.mm.bing.net/th?id=OIP.-GJ4E0_-ectW_gZyIoPmAQHaE8&pid=Api",
+    "https://tse4.mm.bing.net/th?id=OIP.c97fpEd5xVV0DwgqDqUnuQHaEK&pid=Api",
+  ];
+
+
+
+let productContainer = document.getElementById("productSlide");
+let interval;
+
+function  productSlideshow(){
+
+    let counter = 0 ;
+
+     interval = setInterval(function(){
+        productContainer.innerHTML = null;
+
+        if(counter === images.length){
+            counter = 0;   
+        }   
+        let divpro = document.createElement("div")
+        divpro.setAttribute("class","divpro")
+        let imgpro = document.createElement("img"); 
+        imgpro.src = images[counter];
+        imgpro.setAttribute("class","imgpro")
+
+        divpro.append(imgpro)
+        productContainer.append(divpro);
+
+        counter = counter + 1; 
+    }, 2000);
+}
+productSlideshow();
+
+ let proarr = [
+       {
+         img:"https://www.jiomart.com/images/product/150x150/490011303/amulya-dairy-whitener-500-g-pouch-0-20210325.jpg",
+         price:"195.00",
+         name:"Amulya Dairy Whitner500 g  ",
+       },
+       {
+         img:"https://www.jiomart.com/images/product/150x150/490001530/amulya-dairy-whitener-1-kg-pouch-0-20210831.jpg",
+         price:"375.00",
+         name:"Amulya Dairy Whitener 1 kg (Pouch)",
+       },
+       {
+         img:"https://www.jiomart.com/images/product/150x150/590034287/yakult-probiotic-drink-325-ml-bottle-0-20210701.jpg ",
+         price:"70.00",
+         name:"Yakult Probiotic Drink 325 ml  ",
+       },
+       {
+         img:"https://www.jiomart.com/images/product/150x150/490983577/amul-mithai-mate-sweetened-condensed-milk-200-g-tin-0-20210702.jpg ",
+         price:"56.00",
+         name:"Amul Mithai Mate  Milk 200 g  ",
+       },
+       {
+         img:" https://www.jiomart.com/images/product/150x150/490001537/nestle-milkmaid-sweetened-condensed-milk-400-g-tin-0-20210316.jpg",
+         price:"115.00",
+         name:"Nestle Milkmaid   Milk 400 g  ",
+       },
+       {
+         img:"https://www.jiomart.com/images/product/150x150/490001538/amul-mithai-mate-sweetened-condensed-milk-400-g-tin-0-20210701.jpg ",
+         price:"105.00",
+         name:"Amul Mithai   Milk 400 g  ",
+       },
+       {
+         img:"https://www.jiomart.com/images/product/150x150/590124556/mother-dairy-masala-chach-200-ml-tetra-pak-0-20210108.jpg ",
+         price:"11.00",
+         name:"  Dairy Masala Chach 200 ml",
+       },
+       {
+         img:" https://www.jiomart.com/images/product/150x150/491184305/mother-dairy-cream-200-ml-tetra-pak-0-20210316.jpg",
+         price:"49.00",
+         name:"  Dairy Cream 200 ml ",
+       },
+       {
+         img:"https://www.jiomart.com/images/product/150x150/590034288/yakult-light-probiotic-drink-325-ml-bottle-0-20210705.jpg ",
+         price:"85",
+         name:"Yakult Light  Drink 325 ml (Bottle)",
+       },
+       {
+         img:"https://www.jiomart.com/images/product/150x150/490351208/sofit-chocolate-flavoured-soya-milk-1-l-tetra-pak-0-20210312.jpg ",
+         price:"123.00",
+         name:"Sofit Chocolate  Milk 1 L",
+       },
+       {
+         img:" https://www.jiomart.com/images/product/150x150/590041375/mother-dairy-sweetened-lassi-200-ml-bottle-0-20210223.jpg",
+         price:"19.00",
+         name:"Mother Dairy Lassi 200 ml (Bottle)",
+       },
+       {
+         img:" https://www.jiomart.com/images/product/150x150/491584166/epigamia-alphonso-mango-greek-yogurt-smoothie-200-ml-bottle-0-20210326.jpg",
+         price:"40.00",
+         name:"Epigamia Alphonso Mango 200 ml (Bottle)",
+       },
+      
+ ];
+ 
+let pro = document.getElementById("ExploreBestsellers"); 
+ 
+ function showProduct (d) {  
+    pro.innerHTML = null
+
+d.forEach(function(product){
+    let div1 = document.createElement("div"); 
+    div1.setAttribute("class","div1")
+
+    let div_img  = document.createElement("div")
+    div_img.setAttribute("class","div_img") 
+
+    let div_text  = document.createElement("div")
+    div_text.setAttribute("class","div_text")
+
+    let div_btn  = document.createElement("div")
+    div_btn.setAttribute("class","div_btn")
+
+    let img1 = document.createElement("img");
+    img1.src = product.img
+    img1.setAttribute("class","img1")
+
+    let price1 = document.createElement("p");
+    price1.textContent = product.price
+
+    let  name1 = document.createElement("p");
+     name1.textContent = product.name; 
+
+    let btn1 = document.createElement("button");
+    btn1.innerText = "Add to Cart";
+    btn1.setAttribute("class","btn1")
+
+    btn1.onclick = function(){
+        addtocart(product) 
+    }
+    div_img.append(img1) 
+    div_text.append(name1,price1)
+    div_btn.append(btn1)
+    div1.append(div_img,div_text,div_btn)
+    pro.append(div1)
+});
+ };
+ showProduct(proarr)
+
+
+ function sortLH(){
+  let arr = proarr.sort(function (a,b){
+    return a.price - b.price
+  })
+  showProduct(arr);
+}
+
+function sortHL(){
+  let arr = proarr.sort(function (a,b){
+    return b.price - a.price
+  })
+  showProduct(arr);
+}
+
+function addtocart(product) {
+        if (localStorage.getItem("jioUserCart") === null) {
+            localStorage.setItem("jioUserCart", JSON.stringify([]));
+        }
+        let array = JSON.parse(localStorage.getItem("jioUserCart"));
+        array.push(product);
+        localStorage.setItem("jioUserCart", JSON.stringify(array));
+    }
+
+
+</script>

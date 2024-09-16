@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .products{
+            display: grid;
+            grid-template-columns: 30% 30% 30%;
+            grid-gap: 2%;
+            justify-content: center;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+let productData=[
+        {
+            name:"Slim Fit Flat-Front Chinos",
+            price:"689",
+            catagory:"male",
+            image:"https://www.jiomart.com/images/product/240x300/441102019_green/slim-fit-flat-front-chinos-model-441102019_green-0-202010240021.jpg",
+            rating:"4.3",
+            popularity:"10",
+            discount:"10",
+        },
+        {
+            name:"Slim Fit Flat-Front Chinos",
+            price:"689",
+            catagory:"male",
+            image:"https://www.jiomart.com/images/product/240x300/441102019_medgrey/slim-fit-flat-front-chinos-model-441102019_medgrey-0-202010222105.jpg",
+            rating:"4.2",
+            popularity:"9",
+            discount:"20",
+        },
+        {
+            name:"Slim Fit Shirt with Brand Collar",
+            price:"1200",
+            catagory:"male",
+            image:"https://www.jiomart.com/images/product/240x300/441120043_rust/slim-fit-shirt-with-band-collar-model-441120043_rust-0-202106241239.jpg",
+            rating:"4.1",
+            popularity:"8",
+            discount:"20",
+        },
+        {
+            name:"Slim Fit Shirt with Brand Collar",
+            price:"1100",
+            catagory:"male",
+            image:"https://www.jiomart.com/images/product/240x300/441107266_white/typographic-print-crew-neck-t-shirt-model-441107266_white-0-202104150835.jpg",
+            rating:"4.1",
+            popularity:"8",
+            discount:"30",
+        },
+        {
+            name:"Pack of 2 Mid-Rise Cotton Briefs",
+            price:"300",
+            catagory:"male",
+            image:"https://www.jiomart.com/images/product/600x750/440974608_greymelange/pack-of-2-mid-rise-cotton-briefs-model-440974608_greymelange-0-202104081214.jpg",
+            rating:"4.1",
+            popularity:"7",
+            discount:"30",
+        },
+        {
+            name:"Pack of 2 Logo Ankle-Length Socks",
+            price:"200",
+            catagory:"male",
+            image:"https://www.jiomart.com/images/product/600x750/441150138_multi/pack-of-2-logo-ankle-length-socks-model-441150138_multi-0-202102070235.jpg",
+            rating:"4.0",
+            popularity:"7",
+            discount:"30",
+        },
+        {
+            name:"Panelled Track Pants",
+            price:"478",
+            catagory:"male",
+            image:"https://www.jiomart.com/images/product/600x750/440971924_jetblack/panelled-track-pants-with-elasticated-drawstring-waist-model-440971924_jetblack-0-202104072114.jpg",
+            rating:"4.2",
+            popularity:"7",
+            discount:"20",
+        },
+        {
+            name:"Polo T-shirt with Signature",
+            price:"450",
+            catagory:"male",
+            image:"https://www.jiomart.com/images/product/600x750/440762638_green/polo-t-shirt-with-signature-branding-model-440762638_green-0-202104090220.jpg",
+            rating:"4.1",
+            popularity:"8",
+            discount:"20",
+        },
+        {
+            name:"Polo T-shirt with Signature",
+            price:"399",
+            catagory:"male",
+            image:"https://www.jiomart.com/images/product/600x750/441118347_mustard/striped-polo-t-shirt-with-cutaway-collar-model-441118347_mustard-0-202104151137.jpg",
+            rating:"3.9",
+            popularity:"8",
+            discount:"20",
+        },
+        {
+            name:"Colourblock Baseball Cap",
+            price:"340",
+            catagory:"male",
+            image:"https://www.jiomart.com/images/product/600x750/441117487_maroon/striped-polo-t-shirt-with-vented-hemline-model-441117487_maroon-0-202104151415.jpg",
+            rating:"4.3",
+            popularity:"8",
+            discount:"30",
+        },
+        {
+            name:"Genuine Leather Belt",
+            price:"499",
+            catagory:"male",
+            image:"https://www.jiomart.com/images/product/600x750/441028040_brown/genuine-leather-belt-with-buckle-closure-model-441028040_brown-0-202010232150.jpg",
+            rating:"4.2",
+            popularity:"8",
+            discount:"30",
+        },
+        {
+            name:"Checked Cotton Boxers",
+            price:"440",
+            catagory:"male",
+            image:"https://www.jiomart.com/images/product/600x750/441025505_navy/checked-cotton-boxers-model-441025505_navy-0-202104081824.jpg",
+            rating:"4.3",
+            popularity:"8",
+            discount:"30",
+        },
+
+
+
+        {
+            name:"Ankle-Length Leggings",
+            price:"599",
+            catagory:"female",
+            image:"https://www.jiomart.com/images/product/600x750/441020957_white/ankle-length-leggings-with-elasticated-waist-model-441020957_white-0-202104071237.jpg",
+            rating:"4.3",
+            popularity:"8",
+            discount:"30",
+        },
+        {
+            name:"Printed Straight Kurta",
+            price:"699",
+            catagory:"female",
+            image:"https://www.jiomart.com/images/product/600x750/441128063_aqua/printed-straight-kurta-with-mandarin-collar-model-441128063_aqua-0-202107061919.jpg",
+            rating:"4.4",
+            popularity:"9",
+            discount:"40",
+        },
+        {
+            name:"Printed Sleeveless Kurta",
+            price:"799",
+            catagory:"female",
+            image:"https://www.jiomart.com/images/product/600x750/441120973_jetblack/printed-sleeveless-straight-kurta-model-441120973_jetblack-0-202104272004.jpg",
+            rating:"4.3",
+            popularity:"10",
+            discount:"40",
+        },
+        {
+            name:"Geometric Print Straight Kurta",
+            price:"699",
+            catagory:"female",
+            image:"https://www.jiomart.com/images/product/600x750/441125629_peach/geometric-print-straight-kurta-model-441125629_peach-0-202106031418.jpg",
+            rating:"4.2",
+            popularity:"9",
+            discount:"30",
+        },
+        {
+            name:"Ikat Print Sleeveless",
+            price:"899",
+            catagory:"female",
+            image:"https://www.jiomart.com/images/product/600x750/441125617_navy/ikat-print-sleeveless-straight-kurta-model-441125617_navy-0-202106141755.jpg",
+            rating:"4.1",
+            popularity:"9",
+            discount:"30",
+        },
+        {
+            name:"Printed Straight Kurta",
+            price:"899",
+            catagory:"female",
+            image:"https://www.jiomart.com/images/product/600x750/441119595_magntafusha/printed-straight-kurta-model-441119595_magntafusha-0-202103041113.jpg",
+            rating:"4.1",
+            popularity:"9",
+            discount:"30",
+        },
+        {
+            name:"Track Pants with Contrast",
+            price:"899",
+            catagory:"female",
+            image:"https://www.jiomart.com/images/product/600x750/441001504_olive/track-pants-with-contrast-side-taping-model-441001504_olive-0-202105171644.jpg",
+            rating:"4.0",
+            popularity:"9",
+            discount:"30",
+        },
+        {
+            name:"Cami Bra with Adjustable",
+            price:"499",
+            catagory:"female",
+            image:"https://www.jiomart.com/images/product/600x750/441112612_greymelange/cami-bra-with-adjustable-straps-model-441112612_greymelange-0-202012161246.jpg",
+            rating:"4.3",
+            popularity:"9",
+            discount:"30",
+        },
+        {
+            name:"Cami Bra with Adjustable",
+            price:"549",
+            catagory:"female",
+            image:"https://www.jiomart.com/images/product/600x750/441112612_ltpink/cami-bra-with-adjustable-straps-model-441112612_ltpink-0-202012160134.jpg",
+            rating:"4.5",
+            popularity:"9",
+            discount:"20",
+        },
+        {
+            name:"Pooh Print Face Mask",
+            price:"59",
+            catagory:"female",
+            image:"https://www.jiomart.com/images/product/600x750/441078203_yellow/pooh-print-face-mask-model-441078203_yellow-0-202010222052.jpg",
+            rating:"4.5",
+            popularity:"9",
+            discount:"20",
+        },
+        {
+            name:"Women Parijata Art Silk ",
+            price:"989",
+            catagory:"female",
+            image:"https://www.jiomart.com/images/product/600x750/460752790_purple/printed-straight-kurta-with-crushed-dupatta-model-460752790_purple-0-202104061218.jpg",
+            rating:"4.8",
+            popularity:"10",
+            discount:"20",
+        },
+        {
+            name:"Printed Pyjamas with Insert",
+            price:"559",
+            catagory:"female",
+            image:"https://www.jiomart.com/images/product/600x750/441120602_blackcharcoal/printed-pyjamas-with-insert-pockets-model-441120602_blackcharcoal-0-202107061237.jpg",
+            rating:"4.5",
+            popularity:"9",
+            discount:"20",
+        },
+
+
+
+        {
+            name:"Sweet Potato 500 g",
+            price:"32",
+            catagory:"fruits",
+            image:"https://www.jiomart.com/images/product/420x420/590000138/sweet-potato-500-g-0-20201118.jpg",
+            rating:"4.5",
+            popularity:"9",
+            discount:"10",
+        },
+        {
+            name:"Apple Shimla 4 pcs",
+            price:"102",
+            catagory:"fruits",
+            image:"https://www.jiomart.com/images/product/420x420/590428272/apple-shimla-4-pcs-approx-550-g-650-g-0-20210812.jpg",
+            rating:"4.5",
+            popularity:"9",
+            discount:"10",
+        },
+
+
+        {
+            name:"Amulya Dairy Whitener 500 g",
+            price:"195",
+            catagory:"dairt",
+            image:"https://www.jiomart.com/images/product/420x420/490011303/amulya-dairy-whitener-500-g-pouch-0-20210325.jpg",
+            rating:"4.3",
+            popularity:"8",
+            discount:"20",
+        },
+        {
+            name:"Britannia Pizza Cheese",
+            price:"205",
+            catagory:"dairt",
+            image:"https://www.jiomart.com/images/product/420x420/590335038/britannia-blend-and-diced-pizza-cheese-500-g-pouch-0-20210708.jpg",
+            rating:"4.4",
+            popularity:"9",
+            discount:"15",
+        },
+
+
+        {
+            name:"Lion DeSeeded Dates 200 g",
+            price:"35",
+            catagory:"staples",
+            image:"https://www.jiomart.com/images/product/420x420/490000029/lion-seedless-dates-200-g-0-20200805.jpg",
+            rating:"4.7",
+            popularity:"8",
+            discount:"20",
+        },
+        {
+            name:"Good Life Sugar (M) 1 kg",
+            price:"47",
+            catagory:"staples",
+            image:"https://www.jiomart.com/images/product/420x420/491551493/loose-sugar-m-1-kg-0-20210304.jpg",
+            rating:"4.5",
+            popularity:"9",
+            discount:"10",
+        },
+
+
+        {
+            name:"Textured Jogger Pants",
+            price:"374",
+            catagory:"boys",
+            image:"https://www.jiomart.com/images/product/600x750/440995277_olive/textured-jogger-pants-with-elasticated-drawstring-waistband-model-440995277_olive-0-202104062228.jpg",
+            rating:"4.7",
+            popularity:"9",
+            discount:"15",
+        },
+        {
+            name:"Mid-Rise Relaxed Fit Jeans",
+            price:"399",
+            catagory:"boys",
+            image:"https://www.jiomart.com/images/product/600x750/440948175_mediumblue/mid-rise-relaxed-fit-jeans-model-440948175_mediumblue-0-202104061709.jpg",
+            rating:"4.4",
+            popularity:"10",
+            discount:"10",
+        },
+
+
+        {
+            name:"Tulle Fit & Flare Dress",
+            price:"499",
+            catagory:"girls",
+            image:"https://www.jiomart.com/images/product/600x750/441119634_ltblue/tulle-fit-flare-dress-with-sequined-panel-model-441119634_ltblue-0-202104021355.jpg",
+            rating:"4.4",
+            popularity:"10",
+            discount:"20",
+        },
+        {
+            name:"Graphic Print Twofer Dungaree",
+            price:"599",
+            catagory:"girls",
+            image:"https://www.jiomart.com/images/product/600x750/441116858_navyblue/graphic-print-twofer-dungaree-dress-with-ruffled-panels-model-441116858_navyblue-0-202103242139.jpg",
+            rating:"4.2",
+            popularity:"9",
+            discount:"30",
+        },
+
+
+        {
+            name:"Maggi 2-Minute Masala",
+            price:"77",
+            catagory:"snacks",
+            image:"https://www.jiomart.com/images/product/420x420/490003834/maggi-2-minute-masala-instant-noodles-560-g-0-20210811.jpg",
+            rating:"4.6",
+            popularity:"10",
+            discount:"10",
+        },
+        {
+            name:"Britannia Good Day",
+            price:"16",
+            catagory:"snacks",
+            image:"https://www.jiomart.com/images/product/420x420/491161296/britannia-good-day-cashew-cookies-100-g-0-20210819.jpg",
+            rating:"4.7",
+            popularity:"10",
+            discount:"12",
+        },
+    ]
+
+    console.log(productData);
+    // -------------adding data to local server------------------
+
+    if (localStorage.getItem("jioProductData") === null) {
+        localStorage.setItem("jioProductData", JSON.stringify([]));
+    }
+
+    let myProduct = JSON.parse(localStorage.getItem("jioProductData"));
+    if (myProduct.length == productData.length) {
+        // console.log("data already added");
+    } else {
+        productData.forEach(function (el) {
+            myProduct.push(el);
+            localStorage.setItem("jioProductData", JSON.stringify(myProduct));
+        })
+    }
+
+
+    // ------------------getting data from local server----------------------
+
+    let PData = JSON.parse(localStorage.getItem("jioProductData"));
+    
+    function showProduct(){
+        let prodContainer=document.createElement("div");
+        prodContainer.className="products";
+        document.body.appendChild(prodContainer);
+        PData.forEach(function(el){
+            if(el.catagory=="female"){
+                let div=document.createElement("div");
+                let image=document.createElement("img");
+                image.style.width="100%";
+                image.src=el.image;
+                let name=document.createElement("p");
+                name.innerText=el.name;
+                let price=document.createElement("p");
+                price.innerText=el.price;
+                div.append(image,name,price);
+                prodContainer.append(div);
+                console.log(el.name);
+            }
+        });
+    }
+    showProduct();
+
+
+
+</script>

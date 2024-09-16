@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+      *{
+          margin: 0;
+          padding: 0;
+      }
+      #navbar {
+      cursor: pointer;
+      align-items: center;
+      background-color: #008ECC;
+      color: white;
+      padding: 13px;
+    }
+
+    #navbar>div:nth-child(1)>div:nth-child(1) {
+      font-size: 30px;
+      margin-left: 28px;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    #navbar>div:nth-child(1)>div:nth-child(2) {
+      font-size: 10px;
+      margin-left: 98px;
+      font-weight: 800;
+    }
+      #orderMsg h1{
+          color: rgb(38, 63, 204);
+          padding: 4px;
+          margin: 20px 450px;
+      }
+      .material-icons{
+          position: relative;
+          left: 380px;
+          bottom: 34px;
+          color: green;
+      }
+      #orderMsg h2{
+          color: rgb(51, 51, 51);
+          padding: 4px;
+          margin: 20px 110px;
+      }
+      #hombtn{
+          margin-left: 115px;
+          background-color: #008ECC;
+          padding: 7px;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+      }
+      #hombtn:hover{
+          color: rgb(207, 207, 207);
+      }
+  </style>
+</head>
+<body>
+    <div id="navbar">
+        <div onclick="refresh()">
+          <div>JioMart</div>
+          <div>BETA</div>
+        </div>
+      </div>
+    <div id="orderMsg">
+        <h1>Order placed successfully <span class="material-icons">task_alt</span></h1>
+        <h2> <span>Your order number :</span> <span id="orderNo"></span></h2>
+        <button onclick="gotohome()" id="hombtn">Continue Shopping</button>
+    </div>
+    
+</body>
+</html>
+
+<script>
+    document.getElementById("orderNo").innerText=randNum();
+    document.getElementById("orderNo").style.color="green";
+    function randNum(){
+            return Math.floor((Math.random() * 249037) + 189654);
+        }
+    function gotohome(){
+        window.location.href="home.html";
+    }    
+</script>

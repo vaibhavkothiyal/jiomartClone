@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+            background: #f6f6f7;
+        }
+
+        #navbar {
+            cursor: pointer;
+            align-items: center;
+            background-color: #008ECC;
+            color: white;
+            padding: 13px;
+        }
+
+        #navbar>div:nth-child(1)>div:nth-child(1) {
+            font-size: 30px;
+            margin-left: 28px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #navbar>div:nth-child(1)>div:nth-child(2) {
+            font-size: 10px;
+            margin-left: 98px;
+            font-weight: 800;
+        }
+
+        #cont {
+            display: flex;
+            width: 1100px;
+            height: auto;
+            margin: auto;
+            margin-top: 50px;
+            background: white;
+        }
+
+        #cont div img {
+            border-radius: 15px 0 0 15px;
+        }
+
+        #form {
+            display: flex;
+            flex-direction: column;
+            margin-left: 150px;
+            width: 100%;
+        }
+
+        #form>#txt,
+        #pwd {
+            margin: 10px 0 30px 0;
+        }
+
+        .signInText {
+            margin: 30px 0 0 0;
+            font-size: x-large;
+            font-weight: bold;
+        }
+
+        .request {
+            font-size: small;
+            color: grey;
+            margin: 5px 0 30px 0;
+        }
+
+        #txt,
+        #pwd {
+            width: 90%;
+            border: none;
+        }
+
+        .btn {
+            height: 50px;
+            background: #008ecc;
+            border-radius: 50%;
+            border: none;
+            width: 50px;
+            margin: 50px 0 0 150px;
+            margin: auto;
+        }
+
+        @media (max-width:800px)
+        {
+         body,#navbar,#cont{
+                width:100%
+            }
+         #cont>div:nth-child(1)>img
+         {
+             width: 0;
+         }
+         #cont>div:nth-child(2)
+         {
+             width: 100%;
+         }
+         #cont>div:nth-child(2)>#form
+         {
+             margin-left: 30px;
+         }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar">
+        <div onclick="refresh()">
+            <div>JioMart</div>
+            <div>BETA</div>
+        </div>
+    </div>
+    <div id="cont">
+        <div>
+            <img src="https://www.jiomart.com/msassets/images/login-banner.jpg" alt="">
+        </div>
+        <div id="checkSignIn">
+            <form action="" id="form" onsubmit="checkSignIn(event)">
+                <div class="signInText">Sign in</div>
+                <div class="request">Please enter your details</div>
+                <label for="txt">+91</label>
+                <input type="number" id="txt" placeholder="Enter Your Mobile Number...">
+                <input type="password" placeholder="Enter your password if you already a user" id="pwd">
+                <input style="font-size: 25px; color: white;" type="submit" class="btn" value=">">
+            </form>
+        </div>
+    </div>
+    <script>
+
+        var myForm = document.getElementById("form");
+        if (localStorage.getItem("userNumber") === null) {
+            localStorage.setItem("userNumber", JSON.stringify([]));
+        }
+
+        function checkSignIn(e) {
+            e.preventDefault();
+            var numberIn = myForm.txt.value;
+            var pass = myForm.pwd.value;
+            console.log(pass)
+
+            let array = JSON.parse(localStorage.getItem("MartUsers"));
+            var isPresent = false;
+            var signInedUser
+
+            if(array===null){
+                alert("Not a user Sign Up first")
+                window.location.href = "SignUp.html";
+            }else{
+                array.forEach(function (p) {
+                    if (p.Mobile == numberIn && pass == p.Password) {
+                        isPresent = true;
+                        signInedUser = localStorage.setItem("signedIUser",JSON.stringify(p));
+                    }
+                })
+                if (isPresent === false && numberIn !== "") {
+                    window.location.href = "SignUp.html";
+                } else if (numberIn == "") {
+                    alert("you have Entered Empty Number")
+                } else {
+                    alert("Logged In Successfully!")
+                    window.location.href = "home.html";
+                }
+                console.log(isPresent);
+            }
+        }
+        function refresh(){
+            window.location.href="home.html";
+        }
+    </script>
+    </div>
+</body>
+
+</html>

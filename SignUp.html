@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,400;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border: none;
+        }
+
+        #navbar {
+            display: grid;
+            grid-template-columns: 5% 10% 60% 12% 8%;
+            grid-gap: 1%;
+            align-items: center;
+            text-align: center;
+            background-color: #008ecc;
+            color: white;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        #navbar #searchItem {
+            outline-style: none;
+        }
+
+        #navbar>div:nth-child(2)>div:nth-child(1) {
+            font-size: 30px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 1000;
+            cursor: pointer;
+        }
+
+        #navbar>div:nth-child(2)>div:nth-child(2) {
+            text-align: right;
+            font-size: 10px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #navbar .navinnerdiv>div {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .navicon {
+            cursor: pointer;
+        }
+
+        #navbar .navinnerdiv>div:last-child {
+            margin-top: 4px;
+        }
+
+        #navbar .navText {
+            font-size: 13px;
+            font-weight: 600;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+
+        #navbar input {
+            width: 90%;
+            height: 38px;
+            border-radius: 5px;
+            border: none;
+            padding-left: 10px;
+        }
+
+        #navbar .menu {
+            font-size: 35px;
+            cursor: pointer;
+        }
+
+        body {
+            font-family: sans-serif;
+            background: #f6f6f7;
+        }
+
+        ul h1 {
+            height: fit-content;
+            color: white;
+        }
+
+        ul li {
+            margin: auto;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        li a {
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+            font-weight: 400;
+        }
+
+        ul input {
+            width: 40%;
+            height: 30px;
+            margin: auto;
+            border: none;
+            border-radius: 5px;
+        }
+
+
+        #cont {
+            display: flex;
+            width: 1100px;
+            height: auto;
+            margin: auto;
+            margin-top: 50px;
+            background: white;
+        }
+
+        #cont div img {
+            border-radius: 15px 0 0 15px;
+        }
+
+        #form {
+            display: flex;
+            flex-direction: column;
+            margin-left: 150px;
+            width: 100%;
+        }
+
+        .signInText {
+            margin: 30px 0 0 0;
+            font-size: x-large;
+            font-weight: bold;
+        }
+
+        .request {
+            font-size: small;
+            color: grey;
+            margin: 5px 0 30px 0;
+        }
+
+        #txt {
+            width: 90%;
+            border: none;
+        }
+
+        .btn {
+            width: 100%;
+            background: #008ecc;
+            color: white;
+            font-size: 18px;
+            padding: 3px;
+            margin-bottom: 20px;
+            height: 30px;
+            border-radius: 4px;
+        }
+
+        #checkSignUp input {
+            margin-top: 30px;
+            width: 70%;
+            border: lightslategrey;
+            height: 30px;
+        }
+
+        #checkBox {
+            display: grid;
+            grid-template-columns: 50% 10%;
+        }
+
+        #checkBox input div {
+            font-size: small;
+            margin-top: 10px;
+        }
+
+        #msg {
+            margin-top: 0;
+            font-size: x-small;
+            color: grey;
+        }
+
+        @media (max-width:800px)
+        {
+         body,#navbar,#cont{
+                width:100%
+            }
+         #cont>div:nth-child(1)>img
+         {
+             width: 0;
+         }
+         #cont>div:nth-child(2)
+         {
+             width: 100%;
+         }
+         #cont>div:nth-child(2)>#form
+         {
+             margin-left: 30px;
+         }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar">
+        <div>
+            <span class="material-icons menu">menu</span>
+        </div>
+        <div>
+            <div onclick="refresh()">JioMart</div>
+            <div>BETA</div>
+        </div>
+        <div><input id="searchItem" type="text" placeholder="Search essential, groceries, and more..."></div>
+        <div onclick="goTOsignIn()" class="signIn navinnerdiv navicon">
+            <span class="material-icons">perm_identity</span>
+            <div class="navText">Sign In / Sign Up</div>
+        </div>
+        <div onclick="goTocart()" class="cart navinnerdiv navicon">
+            <span class="material-icons">shopping_cart</span>
+            <div class="navText">Cart</div>
+        </div>
+    </div>
+    <div id="cont">
+        <div>
+            <img src="https://www.jiomart.com/msassets/images/login-banner.jpg" alt="">
+        </div>
+        <div id="checkSignUp">
+            <form action="" id="form" onsubmit="checkSignIn(event)">
+                <div class="signInText">Sign Up</div>
+                <div class="request">Please enter your details</div>
+                <input type="text" placeholder="Your First Name" id="firstName">
+                <input type="text" placeholder="Your Last Name" id="lastName">
+                <input type="text" placeholder="Enter your Email Id" id="emailId">
+                <input type="password" placeholder="Enter your Password" id="pwd">
+                <div id="msg">Use 8 or more characters with a mix of letters & numbers</div>
+                <input type="password" placeholder="Enter your Password" id="pwd2">
+                <input type="number" placeholder="Enter Your Mobile Number..." id="mob">
+                <div id="checkBox">
+                    <div>Enable order updates and important information on Whatsapp</div>
+                    <input type="checkbox">
+                </div>
+                <input type="submit" class="btn" value="Verify">
+            </form>
+        </div>
+    </div>
+    <script>
+
+        function goTOsignIn() {
+            window.location.href = "signIn.html";
+        }
+        function goTocart() {
+            window.location.href = "cart.html";
+        }
+
+        var myForm = document.getElementById("form");
+        if (localStorage.getItem("MartUsers") == null) {
+            localStorage.setItem("MartUsers", JSON.stringify([]));
+        }
+        console.log(JSON.parse(localStorage.getItem("MartUsers")))
+
+        function checkSignIn(e) {
+            e.preventDefault();
+            let name = myForm.firstName.value;
+            let lname = myForm.lastName.value;
+            let email = myForm.emailId.value;
+            let pwd = myForm.pwd.value;
+            let confirmPwd = myForm.pwd2.value;
+            let mobile = myForm.mob.value;
+
+            var objOfUser = {
+                Name: name,
+                lastName: lname,
+                Mail: email,
+                Password: pwd,
+                Mobile: mobile
+            }
+
+            if (pwd === confirmPwd && name !== "" && lname !== "" && mobile !== "" && email !== "" && pwd !== "" && pwd.length > 6) {
+                var array = JSON.parse(localStorage.getItem("MartUsers"))
+                var isPresent = false;
+                array.forEach(function (user) {
+                    console.log(user.Mobile);
+                    if (user.Mobile === mobile || user.Mail == email) {
+                        isPresent = true;
+                    }
+                })
+                if (isPresent === false) {
+                    alert("you are successfully signed Up");
+                    array.push(objOfUser);
+                    localStorage.setItem("MartUsers", JSON.stringify(array));
+                    window.location.href = "signIn.html"
+                }
+                else if (isPresent == true) {
+                    alert("Mobile or Email Already Used! Please Enter different")
+                }
+            }
+            else if (name == "" || lname == "" || mobile == "" || email == "" || pwd == "") {
+                alert("Empty feids! Please fill All data")
+            }
+            else if (pwd !== confirmPwd) {
+                alert("passwords in both the fields should be same")
+            }
+            else if (pwd.length < 6) {
+                alert("password should have more than 6 characters")
+            }
+        }
+
+        function refresh(){
+            window.location.href = "home.html"
+        }
+    </script>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       *{
+            margin: 0;
+        }
+        
+        body{
+            font-family: sans-serif;
+            background: #f6f6f7;
+        }
+        #navbar {
+            cursor: pointer;
+            align-items: center;
+            background-color: #008ECC;
+            color: white;
+            padding: 13px;
+        }
+        #navbar>div:nth-child(1)>div:nth-child(1) {
+            font-size: 30px;
+            margin-left: 28px;
+            font-family: 'Roboto', sans-serif;
+        }
+        #navbar>div:nth-child(1)>div:nth-child(2) {
+            font-size: 10px;
+            margin-left: 98px;
+            font-weight: 800;
+        }
+        #headingCart{
+            max-width:900px;
+            padding: 16px 0 16px 24px;
+            height: fit-content;
+            margin: auto;
+            text-align: left;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        #emptyCart{
+            display: flex;
+            flex-direction: column;
+            width: 800px;
+            margin: auto;
+            height: auto;
+        }
+        #emptyCart >div,button,h5{
+          width: 200px;
+          margin: auto;
+          text-align: center;
+          font-weight: 600;
+          margin-bottom: 5px;
+        }
+        #emptyCart div{
+          margin-top: 100px;
+        }
+        #emptyCart button{
+          background: #007bff;
+          border: none;
+          border-radius: 3px;
+          height: 32px;
+          width: 250px;
+          color: white;
+        }
+        #userProCont{
+          display: grid;
+          margin: auto;
+          max-width: 1200px;
+          grid-template-columns: 50% 50%;
+          margin-top: 30px;
+          height: auto;
+        }
+        #userProCont div{
+          margin: 2%;
+        }
+        #userProCont> div:nth-child(1){
+          display: flex;
+          flex-direction: column;
+        }
+        
+        #userProCont> div:nth-child(1)>div>img{
+           height: 100%;
+           width: 25%;
+        }
+        #userProCont> div:nth-child(1)>div>div{
+           height: auto;
+           width: auto;
+        }
+        #top{
+          background: #f6f6f7;
+        }
+        #top>div{
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: center;
+          margin-top: 5px;
+          background: #fff;
+          color: navy;
+          font-size: large;
+          font-weight: 400;
+          border: lightseagreen;
+          border-radius: 5px;
+          text-align: center;
+        }
+        
+        #userProCont div:nth-child(2){
+          display: flex;
+          flex-direction: column;
+        }
+        #userProCont div:nth-child(2) button{
+          margin-top: 20px;
+        }
+        #payment{
+          margin: 50px 20px 20px 20px;
+        }
+        #coupon{
+          margin-top: 0;
+        }
+        #bot>button{
+          color: white;
+          border-radius: 10px;
+          background: #008ECC;
+          padding: 5px;
+          height: 30px;
+          border: none;
+        }
+        
+        #bot>div{
+          background: #fff;
+          padding: 10px;
+          color: black;
+          font-size: small;
+          font-weight: bold;
+        }
+        #bot input{
+            margin: 10px 0 10px 0;
+            border: 1px solid rgb(236, 236, 236);
+            height: 30px;
+        }
+        .rigthPrice{
+          color: purple;
+          font-size: large;
+        }
+        .offer{
+          font-size: x-large;
+          color: green;
+        }
+        #top>div:nth-child(2){
+          display: flex;
+          flex-direction: row;
+        }
+        #bot{
+         background: white;
+        }
+    </style>
+</head>
+<body>
+  <div id="navbar">
+    <div onclick="refresh()">
+        <div>JioMart</div>
+        <div>BETA</div>
+    </div>
+</div>
+  
+    <div id="headingCart">My Cart</div>
+    <div id="emptyCart">
+        <div><img src="https://www.jiomart.com/msassets/images/emptycart.svg" alt=""></div>
+        <h5>Your Cart is empty!</h5>
+        <button onclick="addPro()">Add Products</button>
+    </div>
+    <div id="userProCont">
+      <div id="top">
+      </div>
+      <div id ="bot">
+        <h5 id="coupon">Apply Coupon</h5>
+        <input type="text" placeholder="Add Code Here" id="couponCode">
+        <button onclick="checkCoupon()">Click Here to Apply Code</button>
+        <h3 id="payment">Payment Details</h3>
+        <div>MRP TOTAL: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="pRc"></span></div>
+        <div>Product Discount <span id="dSc"></span></div>
+        <div>Total Amount: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id= tA></span></div>
+        <input type="number" placeholder="Enter Your Number Here" id="verifyNumber">
+        <button onclick="placeOrder()">Place Order</button>
+      </div>
+    </div>
+
+    <script>
+     var emptyCart = document.getElementById("emptyCart");
+     var productCont = document.getElementById("userProCont");
+
+    //  fetching data from cart
+      
+       if(localStorage.getItem("jioUserCart") !== null && JSON.parse(localStorage.getItem("jioUserCart")).length !== 0)
+       {
+          var con = document.getElementById("top");
+            emptyCart.innerHTML = "";
+            var productsArr = JSON.parse(localStorage.getItem("jioUserCart"));
+            var total = 0;
+             productsArr.forEach(function(product)
+            {
+               let divC = document.createElement("div");
+               let image = document.createElement("img");
+               let d = document.createElement("div");
+               let Price = document.createElement("div");
+              total +=  +product.price.trim();
+              
+              
+              if(product.img==undefined){
+                console.log("product not defined");
+                image.src=product.image;
+              }else{
+               image.src = product.img;
+              }
+              
+ 
+              let Name = document.createElement("div");
+              let btn  = document.createElement("button");
+              
+              Name.textContent = "Name of Product: "+ product.name;
+              Price.textContent ="Price: " + product.price;
+              d.append(Name,btn);
+              btn.innerText = "Remove";
+              btn.style.width = "50%"
+              btn.style.border ="none"
+              btn.onclick = function(){
+                removeEle(product);
+              }
+              divC.append(image,d,Price);
+              con.append(divC);
+
+              let actPrice = document.getElementById("pRc");
+              let disPrice = document.getElementById("dSc");
+              let tPrice = document.getElementById("tA");
+              
+              
+              actPrice.textContent = total;
+              disPrice.textContent = "----";
+              tPrice.textContent = total;
+              actPrice.setAttribute("class", "rigthPrice")
+              tPrice.setAttribute("class", "rigthPrice")
+            })
+       }else
+       {
+           productCont.innerHTML ="";
+       }
+       
+       function addPro()
+       {
+         window.location.href = "home.html";
+       }
+
+       function checkCoupon()
+       { 
+          let code = document.getElementById("couponCode")
+          let disPrice = document.getElementById("dSc");
+          let tPrice = document.getElementById("tA");
+
+          if(code.value === "masai30") 
+          {
+            alert("Coupon Applied Successfully");
+            disPrice.textContent = Math.floor(total*(0.3));
+            disPrice.setAttribute("class", "offer");
+            tPrice.textContent = Math.floor((0.7)*total);
+            tPrice.setAttribute("class", "offer")
+            console.log(tPrice.textContent, disPrice.textContent)
+          }else{
+            alert("This Code is Not Valid");
+          }
+       }
+       
+
+       function placeOrder()
+       {
+          let disPrice = document.getElementById("dSc");
+          let tPrice = document.getElementById("tA");
+
+        if(localStorage.getItem("checkoutPrices") === null)
+            {
+               localStorage.setItem("checkoutPrices",JSON.stringify([]));
+               var arr =JSON.parse(localStorage.getItem("checkoutPrices"));
+               arr.push(tPrice.textContent)
+               localStorage.setItem("checkoutPrices",JSON.stringify(arr))
+               arr.push(disPrice.textContent)
+               localStorage.setItem("checkoutPrices",JSON.stringify(arr))
+               console.log(JSON.parse(localStorage.getItem("checkoutPrices")));
+            }else{
+              localStorage.setItem("checkoutPrices",JSON.stringify([]));
+              var arr =JSON.parse(localStorage.getItem("checkoutPrices"));
+               arr.push(tPrice.textContent)
+               localStorage.setItem("checkoutPrices",JSON.stringify(arr))
+               arr.push(disPrice.textContent)
+               localStorage.setItem("checkoutPrices",JSON.stringify(arr))
+               console.log(JSON.parse(localStorage.getItem("checkoutPrices")));
+            }
+
+         var number = document.getElementById("verifyNumber");
+         console.log(number.value);
+         
+            var array =  JSON.parse(localStorage.getItem("MartUsers"))
+            let isPresent = false;
+             console.log(array)
+            if(array !== null  && localStorage.getItem("signedIUser") !== null  && JSON.parse(localStorage.getItem("signedIUser") != {}))
+            {
+              var logUserNumber = (JSON.parse(localStorage.getItem("signedIUser")))["Mobile"]
+              array.forEach(function(user)
+            {
+                console.log(user.Mobile);
+                if(user.Mobile === number.value && number.value == logUserNumber)
+                {
+                  isPresent =true;
+                }
+            })
+            if(isPresent === false && number.value !== "")
+                {
+                  alert("Please Enter Correct Number")
+                }
+                else if(number.value === "")
+                {
+                  alert("Please Enter Your Number")
+                }else
+                {
+                  window.location.href = "checkout.html"
+                }
+            }
+           else
+            {
+                window.location.href ="signIn.html";
+            }
+       }
+
+      function removeEle(product)
+      {
+        
+        var productsArr = JSON.parse(localStorage.getItem("jioUserCart"));
+        var arr = [] 
+        var cnt = 0;
+        for(var i = 0; i<productsArr.length; i++)
+        {
+          if(productsArr[i].name === product.name)
+          {
+            cnt++;
+          }
+          if(cnt>1 && productsArr[i].name === product.name)
+          {
+             arr.push(productsArr[i]);
+          }
+          else if(productsArr[i].name !== product.name)
+          {
+            arr.push(productsArr[i]);
+          } 
+        }
+        console.log(arr);
+      localStorage.setItem("jioUserCart",JSON.stringify(arr));
+      window.location.href = "Cart.html";
+      }
+      function refresh(){
+        window.location.href = "home.html";
+      }
+    </script>
+</body>
+</html>

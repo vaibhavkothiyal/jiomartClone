@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style>
+       *{
+            margin: 0;
+        }
+        body{
+            font-family: sans-serif;
+        }
+        #navbar {
+            cursor: pointer;
+            align-items: center;
+            background-color: #008ECC;
+            color: white;
+            padding: 13px;
+            position: sticky;
+            z-index: 1;
+            top: 0;
+        }
+        #navbar>div:nth-child(1)>div:nth-child(1) {
+            font-size: 30px;
+            margin-left: 28px;
+            font-family: 'Roboto', sans-serif;
+        }
+        #navbar>div:nth-child(1)>div:nth-child(2) {
+            font-size: 10px;
+            margin-left: 98px;
+            font-weight: 800;
+        }
+        #addressform {
+            width: 260px;
+        }
+        #addressContainer {
+            width: 260px;
+            align-items: center;
+            justify-content: center;
+            padding-top: 5px;
+        }
+        #addressContainer input {
+            display: block;
+            margin: 10px;
+            width: 95%;
+            margin: 10px 5px;
+            height: 25px;
+        }
+        #addressContainer button {
+            display: block;
+            width: 60%;
+            height: 30px;
+            background-color: #008ECC;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            margin-left: 50px;
+            cursor: pointer;
+        }
+        #addressContainer .stext {
+          margin-left: 5px;
+            color: red;
+            font-size: 12px;
+        }
+        #addressContainer #Landmark {
+            margin-bottom: 0px;
+        }
+        #addressContainer #Address {
+            margin-bottom: 0px;
+        }
+        #addressform {
+            background-color: #ebebeb;
+            position: absolute;
+            right: 0px;
+            display: none;
+        }
+        #addressform #totoPayBtm {
+            background-color: #008ECC;
+            border-radius: 5px;
+            width: 95%;
+            text-align: center;
+            color: white;
+            margin: 10px 0px 10px;
+            height: 25px;
+            padding-top: 5px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        #headingCart{
+            max-width:900px;
+            padding: 16px 0 16px 24px;
+            height: fit-content;
+            margin: auto;
+            text-align: left;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        #emptyCart{
+            display: flex;
+            flex-direction: column;
+            width: 800px;
+            margin: auto;
+            height: auto;
+        }
+        #emptyCart >div,button,h5{
+          width: 200px;
+          margin: auto;
+          text-align: center;
+          font-weight: 600;
+          margin-bottom: 5px;
+        }
+        #emptyCart div{
+          margin-top: 100px;
+        }
+        #emptyCart button{
+          background: #007bff;
+          border: none;
+          border-radius: 3px;
+          height: 32px;
+          width: 250px;
+          color: white;
+        }
+        #userProCont{
+          display: grid;
+          margin: auto;
+          max-width: 1200px;
+          grid-template-columns: 50% 50%;
+          margin-top: 30px;
+          height: auto;
+        }
+        #userProCont div{
+          margin: 2%;
+        }
+        #userProCont> div:nth-child(1){
+          display: flex;
+          flex-direction: column;
+        }
+        
+        #userProCont> div:nth-child(1)>div>img{
+           height: 100%;
+           width: 25%;
+        }
+        #userProCont> div:nth-child(1)>div>div{
+           height: auto;
+           width: auto;
+        }
+        #top{
+          background: #f6f6f7;
+        }
+        #top>div{
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: center;
+          margin-top: 5px;
+          background: #fff;
+          color: navy;
+          font-size: large;
+          font-weight: 400;
+          border: lightseagreen;
+          border-radius: 5px;
+          text-align: center;
+        }
+        
+        #userProCont div:nth-child(2){
+          display: flex;
+          flex-direction: column;
+        }
+        #userProCont div:nth-child(2) button{
+          margin-top: 20px;
+        }
+        #payment{
+          margin: 50px 20px 20px 20px;
+        }
+        #coupon{
+          margin-top: 0;
+        }
+        #bot>button{
+          color: white;
+          border-radius: 10px;
+          background: #007bff;
+          padding: 5px;
+          height: 30px;
+          border: none;
+        }
+        
+        #bot>div{
+          background: #fff;
+          padding: 10px;
+          color: black;
+          font-size: small;
+          font-weight: bold;
+        }
+        #bot input{
+            margin: 10px 0 10px 0;
+            border: 1px solid rgb(236, 236, 236);
+            height: 30px;
+        }
+        .rigthPrice{
+          color: purple;
+          font-size: large;
+        }
+        .offer,#dSc,#tA{
+          font-size: x-large;
+          color: green;
+        }
+        #top>div:nth-child(2){
+          display: flex;
+          flex-direction: row;
+        }
+        #bot{
+         background: white;
+        }
+        #adrss{
+            margin: 0px 0px 0px 140px;
+            height: 29px;
+            border-radius: 4px;
+            background: #007bff;
+            color: white;
+            border-radius: 2px;
+            border: none;
+            padding: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div onclick="refresh()">
+            <div>JioMart</div>
+            <div>BETA</div>
+        </div>
+    </div>
+    <div id=addressform>
+        <div id="addressContainer">
+            <span class="material-icons location"> place </span>
+            <span>Your Address</span>
+            <form onsubmit="addAdrs(event)" id="myform" action="">
+                <input type="text" name="" id="houseNo" placeholder="Flat/House No">
+                <input type="text" name="" id="FloorNo" placeholder="Floor No">
+                <input type="text" name="" id="TowerNo" placeholder="Tower No">
+                <input type="text" name="" id="BuildingName" placeholder="Building/Apartment Name">
+                <input onkeyup="checkAdd()" type="text" name="" id="Address" placeholder="Address*">
+                <span class="stext" id="addrchk">Please enter a valid address</span>
+                <input type="text" name="" id="Landmark" placeholder="Landmark/Area*">
+                <span class="stext" id="landmChk">Please enter a valid Landmark/Area</span>
+            
+                <button>Save Address</button>
+                <div onclick="goToPayment()" id="totoPayBtm">Proceed To Payment</div>
+            </form>
+        </div>
+    </div>
+
+    <div id="headingCart">CheckOut</div>
+    <button onclick="addressdisp()" id="adrss">+ Add Adress</button>
+    <div id="emptyCart">
+        <div><img src="https://www.jiomart.com/msassets/images/emptycart.svg" alt=""></div>
+        <h5>Your Cart is empty!</h5>
+        <button onclick="addPro()">Add Products</button>
+    </div>
+    <div id="userProCont">
+      <div id="top">
+      </div>
+      <div id ="bot">
+        <h3 id="payment">Payment Details</h3>
+        <div>MRP TOTAL: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="pRc"></span></div>
+        <div>Product Discount <span id="dSc"></span></div>
+        <div>Total Amount: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id= tA></span></div>
+      </div>
+    </div>
+
+    <script>
+     var emptyCart = document.getElementById("emptyCart");
+     var productCont = document.getElementById("userProCont");
+     let dPrice = document.getElementById("dSc");
+     let FPrice = document.getElementById("tA");
+
+      let arr= JSON.parse(localStorage.getItem("checkoutPrices"));
+      {
+          console.log(arr[0], arr[1])
+          var fP = Number(arr[0]);
+          FPrice.textContent = fP;
+          if(+arr[1] !== NaN)
+          {
+              dPrice.textContent = arr[1]; 
+          }
+      }
+      
+       if(localStorage.getItem("jioUserCart") !== null && JSON.parse(localStorage.getItem("jioUserCart")).length !== 0)
+       {
+          var con = document.getElementById("top");
+            emptyCart.innerHTML = "";
+            var productsArr = JSON.parse(localStorage.getItem("jioUserCart"));
+            var total = 0;
+             productsArr.forEach(function(product)
+            {
+               let divC = document.createElement("div");
+               let image = document.createElement("img");
+               let d = document.createElement("div");
+               let Price = document.createElement("div");
+              total +=  +product.price.trim();
+                
+              if(product.img==undefined){
+                console.log("product not defined");
+                image.src=product.image;
+              }else{
+               image.src = product.img;
+              }
+
+              let Name = document.createElement("div");
+              let btn  = document.createElement("button");
+              
+              Name.textContent = "Name of Product: "+ product.name;
+              Price.textContent ="Price: " + product.price;
+              d.append(Name);
+              btn.innerText = "Remove";
+              btn.style.width = "50%"
+              btn.style.border ="none"
+              btn.onclick = function(){
+                removeEle(product);
+              }
+              divC.append(image,d,Price);
+              con.append(divC);
+
+              let actPrice = document.getElementById("pRc");
+              let disPrice = document.getElementById("dSc");
+              let tPrice = document.getElementById("tA");
+              
+              
+              actPrice.textContent = total +"/-";
+
+              actPrice.setAttribute("class", "rigthPrice")
+              tPrice.setAttribute("class", "rigthPrice")
+            })
+       }else
+       {
+           productCont.innerHTML ="";
+       }
+       
+       function addPro()
+       {
+         window.location.href = "home.html";
+       }
+
+
+    // vaibhav code
+    function refresh() {
+        console.log("he refreshed");
+        window.location.href = "home.html";
+    }
+    function addressdisp() {
+        document.getElementById("addressform").style.display = "block";
+    }
+    function goToPayment() {
+        let hN = document.getElementById("houseNo");
+        let fN = document.getElementById("FloorNo");
+        let tN = document.getElementById("TowerNo");
+        let bN = document.getElementById("BuildingName");
+        let aL  = document.getElementById("Address");
+        let lndM = document.getElementById("Landmark");
+         
+         var userAdd ={
+             houseNo:   hN.value,
+             floorNo:   fN.value,
+             towerNo:   tN.value,
+             building:  bN.value,
+             adressLine: aL.value,
+             landMark:  lndM.value
+         }
+         for(key in userAdd)
+         {
+             console.log(userAdd[key]);
+         }
+         if(lndM.value != "" && fN.value!= "" && tN.value != "" && bN.value!= "" && aL.value != "" && hN.value != "")
+         {
+           if(localStorage.getItem("jioUserAddress") === null)
+           {
+             localStorage.setItem("jioUserAddress", JSON.stringify([]));
+             let arr = JSON.parse(localStorage.getItem("jioUserAddress"));
+             arr.push(userAdd);
+              localStorage.setItem("jioUserAddress",JSON.stringify(arr));
+           }
+          else
+           {
+              let arr = JSON.parse(localStorage.getItem("jioUserAddress"));
+             arr.push(userAdd);
+             localStorage.setItem("jioUserAddress", JSON.stringify(arr));
+           }
+          window.location.href = "payment.html";
+         }else
+         {
+           alert("please Enter all Feilds!")
+         }
+    }
+    function addAdrs(e) {
+        e.preventDefault();
+    }
+    function checkAdd() {
+    }
+    let addressInp = document.getElementById("Address");
+    addressInp.onkeyup = function (e) {
+        if (e.target.value != null) {
+            document.getElementById("addrchk").innerText=null;
+        } 
+        if(e.target.value.length==0){
+            document.getElementById("addrchk").innerText="Please enter a valid address";
+        }
+    }
+    let landmInp = document.getElementById("Landmark");
+    landmInp.onkeyup = function (e) {
+        if (e.target.value != null) {
+            document.getElementById("landmChk").innerText=null;
+        }
+        if(e.target.value.length==0){
+            document.getElementById("landmChk").innerText="Please enter a valid Landmark/Area";
+        }
+    }
+
+    
+    </script>
+</body>
+</html>
